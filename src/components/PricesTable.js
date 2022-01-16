@@ -29,7 +29,7 @@ function PricesTable(props) {
               <tbody>
                 {elements?.map((e, index) => (
                   <tr key={index} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{e.item_id}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{e.name}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{e.city}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{e.sell_price_min}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{e.buy_price_max}</td>

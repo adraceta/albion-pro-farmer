@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import PricesForm from './PricesForm';
 import PricesTable from './PricesTable';
 
@@ -11,6 +11,10 @@ function PricesManager() {
   const [resultsTable, setResultsTable] = useState([])
   const [lastSort, setLastSort] = useState({ property: '', desc: false })
 
+  useEffect(() => {
+    restoreData()
+  }, [])
+
 
   const fetchData = async (actualUniqueName, actualCity) => {
     const a = 'T1_CARROT'
@@ -22,16 +26,19 @@ function PricesManager() {
 
   const fetchAll = async (array) => {
     const allAsyncResults = []
-    for (const item of array) {
-      const asyncResult = await fetchData(item.item_id, item.city)
-      allAsyncResults.push(...asyncResult)
+    for (const element of array) {
+      const asyncResult = await fetchData(element.item_id, element.city)
+      allAsyncResults.push(...asyncResult.map(e => ({ ...e, name: element.name })))
     }
     return allAsyncResults
   }
 
   const retrieveData = async (actualUniqueName, actualCity) => {
     const res = await fetchData(actualUniqueName, actualCity)
-    setResultsTable(resultsTable.concat(res))
+
+    console.log(res)
+    console.log({ ...res, ...(item && { name: item.LocalizedNames["ES-ES"] }) })
+    setResultsTable(resultsTable.concat(res.map(e => ({ ...e, ...(item && { name: item.LocalizedNames["ES-ES"] }) }))))
   }
 
   const removeResult = (index) => {
@@ -60,8 +67,10 @@ function PricesManager() {
 
   const restoreData = async () => {
     const restored = JSON.parse(localStorage.getItem('albionItemList'))
-    const newResults = await fetchAll(restored)
-    setResultsTable(newResults)
+    if (restored) {
+      const newResults = await fetchAll(restored)
+      setResultsTable(newResults)
+    }
   }
 
   const clearData = () => {
