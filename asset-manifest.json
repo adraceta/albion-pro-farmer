@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/albion-pro-farmer/static/css/main.90300e6d.css",
-    "main.js": "/albion-pro-farmer/static/js/main.439b13df.js",
+    "main.css": "/albion-pro-farmer/static/css/main.e175ac5e.css",
+    "main.js": "/albion-pro-farmer/static/js/main.ba678da9.js",
     "static/js/787.b7aab0b1.chunk.js": "/albion-pro-farmer/static/js/787.b7aab0b1.chunk.js",
     "index.html": "/albion-pro-farmer/index.html",
-    "main.90300e6d.css.map": "/albion-pro-farmer/static/css/main.90300e6d.css.map",
-    "main.439b13df.js.map": "/albion-pro-farmer/static/js/main.439b13df.js.map",
+    "main.e175ac5e.css.map": "/albion-pro-farmer/static/css/main.e175ac5e.css.map",
+    "main.ba678da9.js.map": "/albion-pro-farmer/static/js/main.ba678da9.js.map",
     "787.b7aab0b1.chunk.js.map": "/albion-pro-farmer/static/js/787.b7aab0b1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.90300e6d.css",
-    "static/js/main.439b13df.js"
+    "static/css/main.e175ac5e.css",
+    "static/js/main.ba678da9.js"
   ]
 }
