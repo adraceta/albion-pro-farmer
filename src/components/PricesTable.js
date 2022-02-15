@@ -10,6 +10,8 @@ function PricesTable(props) {
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  </th>
                   <th scope="col" className="cursor-pointer px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" onClick={() => sortByCallback('item_id')}>
                     Objeto
                   </th>
@@ -29,6 +31,9 @@ function PricesTable(props) {
               <tbody>
                 {elements?.map((e, index) => (
                   <tr key={index} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                    <td className="thumb-img">
+                      <img src={`https://render.albiononline.com/v1/item/${e.item_id}.png`} alt={`${e.item_id}_thumb`} />
+                    </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{e.name}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{e.city}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{e.sell_price_min}</td>
