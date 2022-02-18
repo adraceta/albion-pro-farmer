@@ -1,5 +1,5 @@
 {
-  "homepage":"https://adraceta.github.io/albion-pro-farmer",
+  "homepage": "https://adraceta.github.io/albion-pro-farmer",
   "name": "albion-pro-farmer",
   "version": "0.1.0",
   "private": true,
@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^13.5.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-ga4": "^1.4.1",
     "react-scripts": "5.0.0",
     "react-select": "^5.2.1",
     "web-vitals": "^2.1.3"
