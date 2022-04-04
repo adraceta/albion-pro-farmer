@@ -61609,4 +61609,4 @@ const all_items = [
   }
 ]
 
-export const usefulItems = all_items.filter(e => e.Index <= 905)
+export const usefulItems = all_items.filter(e => e.Index <= 1520)
