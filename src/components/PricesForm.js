@@ -82,7 +82,7 @@ function PricesForm(props) {
           </div>
         </div>
       </div>
-
+      <div class="border-b border-gray-300"></div>
       <div className="pt-5">
         <div className="flex justify-center md:justify-end flex-wrap">
           <button

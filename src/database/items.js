@@ -61610,5 +61610,37 @@ const all_items = [
 ]
 
 export const usefulItems = all_items.filter(e => e.Index <= 905)
-export const runesFixed = all_items.filter(e => e.Index >= 1493 && e.Index <= 1519).filter(e=> e.UniqueName.includes('RUNE') || e.UniqueName.includes('SOUL') || e.UniqueName.includes('RELIC'))
+
+const runesOrder = (name) => {
+  if (name.includes('RUNE')) {
+    return 'A'
+  } else if (name.includes('SOUL')) {
+    return 'B'
+  } else {
+    return 'C'
+  }
+}
+
+function compareRunes(a, b) {
+  const compareA = runesOrder(a.UniqueName)
+  const compareB = runesOrder(b.UniqueName)
+  console.log(compareA)
+  console.log(compareB)
+
+  if (compareA < compareB) {
+    return -1
+  } else if (compareA > compareB) {
+    return 1
+  } else {
+    if (a.UniqueName < b.UniqueName) {
+      return -1
+    } else if (a.UniqueName > b.UniqueName) {
+      return 1
+    } else {
+      return 0
+    }
+  }
+}
+
+export const runesFixed = all_items.filter(e => e.Index >= 1493 && e.Index <= 1519).filter(e => e.UniqueName.includes('RUNE') || e.UniqueName.includes('SOUL') || e.UniqueName.includes('RELIC')).sort(compareRunes)
 

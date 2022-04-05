@@ -37,7 +37,7 @@ function PricesManager() {
     const allAsyncResults = []
     for (const element of runesFixed) {
       const asyncResult = await fetchData(element.UniqueName)
-      allAsyncResults.push(...asyncResult.map(e => ({ ...e, name: element.name })))
+      allAsyncResults.push(...asyncResult.map(e => ({ ...e, name: element.LocalizedNames["ES-ES"] })))
     }
     return allAsyncResults
   }
