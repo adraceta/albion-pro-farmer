@@ -61609,5 +61609,6 @@ const all_items = [
   }
 ]
 
-export const usefulItems = all_items.filter(e => e.Index <= 905 || (e.Index >= 1493 && e.Index <= 1520))
+export const usefulItems = all_items.filter(e => e.Index <= 905)
+export const runesFixed = all_items.filter(e => e.Index >= 1493 && e.Index <= 1519).filter(e=> e.UniqueName.includes('RUNE') || e.UniqueName.includes('SOUL') || e.UniqueName.includes('RELIC'))
 

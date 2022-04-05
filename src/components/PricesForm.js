@@ -3,7 +3,7 @@ import { usefulItems } from '../database/items';
 
 
 function PricesForm(props) {
-  const { manualItem, onManualItemChange, item, onItemChange, city, onCityChange, clearData, refreshData, restoreData, saveData, retrieveData } = props
+  const { manualItem, onManualItemChange, item, onItemChange, city, onCityChange, clearData, refreshData, restoreData, saveData, retrieveData, getFixedRunes } = props
 
   const allItemsOptions = usefulItems
   const allCities = [
@@ -22,12 +22,12 @@ function PricesForm(props) {
         <div className="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
           <div>
             <h3 className="text-lg leading-6 font-medium text-gray-900">Buscador de Precios</h3>
-            <p className="mt-1 max-w-2xl text-sm text-gray-500">Selecciona un objeto y encuentra el histórico de precios</p>
+            <p className="mt-1 max-w-2xl text-sm text-gray-500">Escribe o selecciona un objeto y añadelo a la tabla para consultar el precio</p>
           </div>
           <div className="space-y-6 sm:space-y-5">
             <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
               <label htmlFor="manual-item" className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
-                Objeto
+                Objeto por ID
               </label>
               <div className="mt-1 sm:mt-0 sm:col-span-2">
                 <input
@@ -42,7 +42,7 @@ function PricesForm(props) {
             </div>
             <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
               <label htmlFor="object" className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
-                Selección Objeto
+                Selección Material
               </label>
               <div className="mt-1 sm:mt-0 sm:col-span-2">
                 <Select
@@ -74,9 +74,9 @@ function PricesForm(props) {
         <div className="pt-5">
           <div className="flex justify-center md:justify-end flex-wrap">
             <button
-              type="submit"
+              type="button"
               onClick={() => retrieveData()}
-              className="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mb-2" >
+              className="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-lime-600 hover:bg-lime-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-lime-500 mb-2" >
               Añadir Precios
             </button>
           </div>
@@ -86,6 +86,11 @@ function PricesForm(props) {
       <div className="pt-5">
         <div className="flex justify-center md:justify-end flex-wrap">
           <button
+            type="button"
+            onClick={() => getFixedRunes()}
+            className="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-violet-600 hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500 mr-2 mb-2" >
+            Listado de Runas
+          </button><button
             type="button"
             onClick={() => clearData()}
             className="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-2 mb-2" >

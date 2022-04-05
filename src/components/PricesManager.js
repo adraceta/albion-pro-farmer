@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
+import { runesFixed } from '../database/items';
 import PricesForm from './PricesForm';
 import PricesTable from './PricesTable';
-
 
 
 function PricesManager() {
@@ -28,6 +28,15 @@ function PricesManager() {
     const allAsyncResults = []
     for (const element of array) {
       const asyncResult = await fetchData(element.item_id, element.city)
+      allAsyncResults.push(...asyncResult.map(e => ({ ...e, name: element.name })))
+    }
+    return allAsyncResults
+  }
+
+  const fetchFixedRunes = async () => {
+    const allAsyncResults = []
+    for (const element of runesFixed) {
+      const asyncResult = await fetchData(element.UniqueName)
       allAsyncResults.push(...asyncResult.map(e => ({ ...e, name: element.name })))
     }
     return allAsyncResults
@@ -80,13 +89,18 @@ function PricesManager() {
     setResultsTable(newResults)
   }
 
+  const getFixedRunes = async () => {
+    const newResults = await fetchFixedRunes()
+    setResultsTable(newResults)
+  }
+
 
 
   return (
     <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
       <PricesForm manualItem={manualItem} onManualItemChange={setManualItem} item={item} onItemChange={setItem} city={city} onCityChange={setCity}
-        clearData={clearData} refreshData={refreshData} restoreData={restoreData} saveData={saveData} retrieveData={retrieveData} />
+        clearData={clearData} refreshData={refreshData} restoreData={restoreData} saveData={saveData} retrieveData={retrieveData} getFixedRunes={getFixedRunes} />
       <PricesTable elements={resultsTable} sortByCallback={sortBy} removeResultCallback={removeResult} />
 
     </div >
