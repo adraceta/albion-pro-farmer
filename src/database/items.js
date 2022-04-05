@@ -61609,4 +61609,5 @@ const all_items = [
   }
 ]
 
-export const usefulItems = all_items.filter(e => e.Index <= 1520)
+export const usefulItems = all_items.filter(e => e.Index <= 905 || (e.Index >= 1493 && e.Index <= 1520))
+

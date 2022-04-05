@@ -17,7 +17,7 @@ function PricesForm(props) {
 
 
   return (
-    <form className="space-y-8 divide-y divide-gray-200">
+    <form className="">
       <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
         <div className="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
           <div>
@@ -71,15 +71,15 @@ function PricesForm(props) {
             </div>
           </div>
         </div>
-      </div>
-      <div className="pt-5">
-        <div className="flex justify-center md:justify-end flex-wrap">
-          <button
-            type="button"
-            onClick={() => retrieveData()}
-            className="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mb-2" >
-            Añadir Precios
-          </button>
+        <div className="pt-5">
+          <div className="flex justify-center md:justify-end flex-wrap">
+            <button
+              type="submit"
+              onClick={() => retrieveData()}
+              className="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mb-2" >
+              Añadir Precios
+            </button>
+          </div>
         </div>
       </div>
 
