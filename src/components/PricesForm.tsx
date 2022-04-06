@@ -1,8 +1,23 @@
+import React from 'react';
 import Select from 'react-select'
-import { usefulItems } from '../database/items';
+import { IItem, usefulItems } from '../database/items';
 
+export interface IPriceFormProps {
+  manualItem: string
+  onManualItemChange: (value: string) => void
+  item: IItem
+  onItemChange: (value: IItem) => void
+  city: { label: string, value: string }
+  onCityChange: (value: { label: string, value: string }) => void
+  clearData: () => void
+  refreshData: () => void
+  restoreData: () => void
+  saveData: () => void
+  retrieveData: () => void
+  getFixedRunes: () => void
+}
 
-function PricesForm(props) {
+function PricesForm(props: IPriceFormProps) {
   const { manualItem, onManualItemChange, item, onItemChange, city, onCityChange, clearData, refreshData, restoreData, saveData, retrieveData, getFixedRunes } = props
 
   const allItemsOptions = usefulItems
@@ -82,7 +97,7 @@ function PricesForm(props) {
           </div>
         </div>
       </div>
-      <div class="border-b border-gray-300"></div>
+      <div className="border-b border-gray-300"></div>
       <div className="pt-5">
         <div className="flex justify-center md:justify-end flex-wrap">
           <button

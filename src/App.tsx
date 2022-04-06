@@ -1,3 +1,4 @@
+import React from 'react';
 import PricesManager from './components/PricesManager';
 import ReactGA from 'react-ga4';
 

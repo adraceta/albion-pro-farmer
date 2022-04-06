@@ -1,14 +1,14 @@
-import { useEffect, useState } from 'react';
-import { runesFixed } from '../database/items';
+import React, { useEffect, useState } from 'react';
+import { IItem, runesFixed } from '../database/items';
 import PricesForm from './PricesForm';
 import PricesTable from './PricesTable';
 
 
 function PricesManager() {
   const [manualItem, setManualItem] = useState('')
-  const [item, setItem] = useState({})
+  const [item, setItem] = useState<IItem>(null)
   const [city, setCity] = useState({ label: 'Fort Sterling', value: 'Fort Sterling' })
-  const [resultsTable, setResultsTable] = useState([])
+  const [resultsTable, setResultsTable] = useState<IItem[]>([])
   const [lastSort, setLastSort] = useState({ property: '', desc: false })
 
   useEffect(() => {
@@ -16,10 +16,10 @@ function PricesManager() {
   }, [])
 
 
-  const fetchData = async (actualUniqueName, actualCity) => {
+  const fetchData = async (actualUniqueName: string, actualCity?: string) => {
     const a = 'T1_CARROT'
     //&time-scale=1
-    const res = await fetch(`https://www.albion-online-data.com/api/v2/stats/Prices/${actualUniqueName || item.UniqueName || manualItem || a}.json?locations=${actualCity || city.value}`)
+    const res = await fetch(`https://www.albion-online-data.com/api/v2/stats/Prices/${actualUniqueName || item?.UniqueName || manualItem || a}.json?locations=${actualCity || city.value}`)
     const json = await res.json()
     return json
   }
@@ -42,19 +42,19 @@ function PricesManager() {
     return allAsyncResults
   }
 
-  const retrieveData = async (actualUniqueName, actualCity) => {
+  const retrieveData = async (actualUniqueName?: string, actualCity?: string) => {
     const res = await fetchData(actualUniqueName, actualCity)
     const itemName = item.LocalizedNames ? item.LocalizedNames["ES-ES"] : actualUniqueName ? actualUniqueName : manualItem
     setResultsTable(resultsTable.concat(res.map(e => ({ ...e, ...(item && { name: itemName }) }))))
   }
 
-  const removeResult = (index) => {
+  const removeResult = (index: number) => {
     const filtered = resultsTable.filter((e, i) => i !== index)
     setResultsTable(filtered)
   }
 
-  const sortBy = (property) => {
-    function compare(a, b) {
+  const sortBy = (property: string) => {
+    function compare(a: IItem, b: IItem) {
       if (a[property] < b[property]) {
         return lastSort.desc ? 1 : -1
       }
@@ -95,14 +95,11 @@ function PricesManager() {
   }
 
 
-
   return (
     <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
       <PricesForm manualItem={manualItem} onManualItemChange={setManualItem} item={item} onItemChange={setItem} city={city} onCityChange={setCity}
         clearData={clearData} refreshData={refreshData} restoreData={restoreData} saveData={saveData} retrieveData={retrieveData} getFixedRunes={getFixedRunes} />
       <PricesTable elements={resultsTable} sortByCallback={sortBy} removeResultCallback={removeResult} />
-
     </div >
   )
 }

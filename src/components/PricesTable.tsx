@@ -1,5 +1,13 @@
+import React from 'react';
+import { IItem } from "../database/items"
 
-function PricesTable(props) {
+interface IPriceTableProps {
+  elements: IItem[]
+  sortByCallback: (property: string, desc?: boolean) => void
+  removeResultCallback: (index: number) => void
+}
+
+function PricesTable(props: IPriceTableProps) {
   const { elements, sortByCallback, removeResultCallback } = props
 
   return (

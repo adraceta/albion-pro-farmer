@@ -1,3 +1,24 @@
+export interface IItem {
+  LocalizedNames: { "EN-US": string, "ES-ES": string }
+  Index: number
+  UniqueName: string
+  name?: string
+  itemTypeId?: string
+  item_id?: string
+  city?: string
+  qualityLevel?: number
+  sellPriceMin?: number
+  sell_price_min?: number
+  sellPriceMinDate?: Date
+  sellPriceMax?: number
+  sellPriceMaxDate?: Date
+  buyPriceMin?: number
+  buyPriceMinDate?: Date
+  buyPriceMax?: number
+  buy_price_max?: number
+  buyPriceMaxDate?: Date
+}
+
 const all_items = [
   {
     LocalizedNames: {
@@ -61621,11 +61642,9 @@ const runesOrder = (name) => {
   }
 }
 
-function compareRunes(a, b) {
+const compareRunes = (a, b) => {
   const compareA = runesOrder(a.UniqueName)
   const compareB = runesOrder(b.UniqueName)
-  console.log(compareA)
-  console.log(compareB)
 
   if (compareA < compareB) {
     return -1
