@@ -44,8 +44,10 @@ function PricesManager() {
 
   const retrieveData = async (actualUniqueName?: string, actualCity?: string) => {
     const res = await fetchData(actualUniqueName, actualCity)
-    const itemName = item.LocalizedNames ? item.LocalizedNames["ES-ES"] : actualUniqueName ? actualUniqueName : manualItem
-    setResultsTable(resultsTable.concat(res.map(e => ({ ...e, ...(item && { name: itemName }) }))))
+    const itemName = item?.LocalizedNames ? item.LocalizedNames["ES-ES"] : actualUniqueName ? actualUniqueName : manualItem
+    if (itemName) {
+      setResultsTable(resultsTable.concat(res.map(e => ({ ...e, name: itemName }))))
+    }
   }
 
   const removeResult = (index: number) => {
