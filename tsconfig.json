@@ -5,6 +5,7 @@
         "sourceMap": false,
         "removeComments": false,
         "noImplicitAny": false,
+        "outDir": "dist",
         "suppressImplicitAnyIndexErrors": true,
         "lib": [
             "dom",
