@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 import Select from 'react-select'
-import { IItem, usefulItems } from '../database/items';
+import { IItem, usefulItems } from '../database/items'
 
 export interface IPriceFormProps {
   manualItem: string
@@ -27,7 +27,7 @@ function PricesForm(props: IPriceFormProps) {
     { label: 'Caerleon', value: 'Caerleon' },
     { label: 'Lymhurst', value: 'Lymhurst' },
     { label: 'Martlock', value: 'Martlock' },
-    { label: 'Thetford ', value: 'Thetford ' },
+    { label: 'Thetford', value: 'Thetford' },
   ]
 
 

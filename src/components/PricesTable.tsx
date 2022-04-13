@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import { IItem } from "../database/items"
 
 interface IPriceTableProps {

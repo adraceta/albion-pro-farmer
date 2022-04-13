@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { IItem, runesFixed } from '../database/items';
-import PricesForm from './PricesForm';
-import PricesTable from './PricesTable';
+import React, { useEffect, useState } from 'react'
+import { IItem, runesFixed } from '../database/items'
+import PricesForm from './PricesForm'
+import PricesTable from './PricesTable'
 
 
 function PricesManager() {
@@ -106,4 +106,4 @@ function PricesManager() {
   )
 }
 
-export default PricesManager;
+export default PricesManager
