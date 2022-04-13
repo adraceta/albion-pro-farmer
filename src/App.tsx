@@ -3,7 +3,6 @@ import PricesManager from './components/PricesManager'
 import ReactGA from 'react-ga4'
 
 function App() {
-
   ReactGA.initialize('G-GGL2SMQLJY')
   ReactGA.send('pageview')
 

@@ -1,3 +1,6 @@
+/* eslint-disable comma-dangle */
+/* eslint-disable camelcase */
+/* eslint-disable quotes */
 export interface IItem {
   LocalizedNames: { "EN-US": string, "ES-ES": string }
   Index: number
@@ -19,7 +22,7 @@ export interface IItem {
   buyPriceMaxDate?: Date
 }
 
-const all_items = [
+const allItems = [
   {
     LocalizedNames: {
       "EN-US": "Hideout Construction Kit",
@@ -61630,7 +61633,7 @@ const all_items = [
   }
 ]
 
-export const usefulItems = all_items.filter(e => e.Index <= 905)
+export const usefulItems = allItems.filter(e => e.Index <= 905)
 
 const runesOrder = (name) => {
   if (name.includes('RUNE')) {
@@ -61661,5 +61664,4 @@ const compareRunes = (a, b) => {
   }
 }
 
-export const runesFixed = all_items.filter(e => e.Index >= 1493 && e.Index <= 1519).filter(e => e.UniqueName.includes('RUNE') || e.UniqueName.includes('SOUL') || e.UniqueName.includes('RELIC')).sort(compareRunes)
-
+export const runesFixed = allItems.filter(e => e.Index >= 1493 && e.Index <= 1519).filter(e => e.UniqueName.includes('RUNE') || e.UniqueName.includes('SOUL') || e.UniqueName.includes('RELIC')).sort(compareRunes)

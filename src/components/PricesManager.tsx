@@ -18,7 +18,7 @@ function PricesManager() {
 
   const fetchData = async (actualUniqueName: string, actualCity?: string) => {
     const a = 'T1_CARROT'
-    //&time-scale=1
+    // &time-scale=1
     const res = await fetch(`https://www.albion-online-data.com/api/v2/stats/Prices/${actualUniqueName || item?.UniqueName || manualItem || a}.json?locations=${actualCity || city.value}`)
     const json = await res.json()
     return json
@@ -37,14 +37,14 @@ function PricesManager() {
     const allAsyncResults = []
     for (const element of runesFixed) {
       const asyncResult = await fetchData(element.UniqueName)
-      allAsyncResults.push(...asyncResult.map(e => ({ ...e, name: element.LocalizedNames["ES-ES"] })))
+      allAsyncResults.push(...asyncResult.map(e => ({ ...e, name: element.LocalizedNames['ES-ES'] })))
     }
     return allAsyncResults
   }
 
   const retrieveData = async (actualUniqueName?: string, actualCity?: string) => {
     const res = await fetchData(actualUniqueName, actualCity)
-    const itemName = item?.LocalizedNames ? item.LocalizedNames["ES-ES"] : actualUniqueName ? actualUniqueName : manualItem
+    const itemName = item?.LocalizedNames ? item.LocalizedNames['ES-ES'] : (actualUniqueName || manualItem)
     if (itemName) {
       setResultsTable(resultsTable.concat(res.map(e => ({ ...e, name: itemName }))))
     }
