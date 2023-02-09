@@ -61634,6 +61634,7 @@ const allItems = [
 ]
 
 export const usefulItems = allItems.filter(e => e.Index <= 905)
+export const equipItems = allItems.filter(e => e.Index >= 1533 && e.Index <= 3983)
 
 const runesOrder = (name) => {
   if (name.includes('RUNE')) {

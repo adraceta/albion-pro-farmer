@@ -6,21 +6,22 @@ import PricesTable from './PricesTable'
 
 function PricesManager() {
   const [manualItem, setManualItem] = useState('')
-  const [item, setItem] = useState<IItem>(null)
+  const [useful, setUseful] = useState<IItem>(null)
+  const [equip, setEquip] = useState<IItem>(null)
   const [city, setCity] = useState({ label: 'Fort Sterling', value: 'Fort Sterling' })
   const [resultsTable, setResultsTable] = useState<IItem[]>([])
   const [lastSort, setLastSort] = useState({ property: '', desc: false })
 
   useEffect(() => {
     restoreData()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
 
   const fetchData = async (actualUniqueName: string, actualCity?: string) => {
     const a = 'T1_CARROT'
     // &time-scale=1
-    const res = await fetch(`https://www.albion-online-data.com/api/v2/stats/Prices/${actualUniqueName || item?.UniqueName || manualItem || a}.json?locations=${actualCity || city.value}`)
+    const res = await fetch(`https://www.albion-online-data.com/api/v2/stats/Prices/${actualUniqueName || useful?.UniqueName || equip?.UniqueName || manualItem || a}.json?locations=${actualCity || city.value}`)
     const json = await res.json()
     return json
   }
@@ -45,7 +46,13 @@ function PricesManager() {
 
   const retrieveData = async (actualUniqueName?: string, actualCity?: string) => {
     const res = await fetchData(actualUniqueName, actualCity)
-    const itemName = item?.LocalizedNames ? item.LocalizedNames['ES-ES'] : (actualUniqueName || manualItem)
+    let itemName
+    if (useful) {
+      itemName = useful?.LocalizedNames ? useful.LocalizedNames['ES-ES'] : (actualUniqueName || manualItem)
+    } else if (equip) {
+      itemName = equip?.LocalizedNames ? equip.LocalizedNames['ES-ES'] : (actualUniqueName || manualItem)
+    }
+
     if (itemName) {
       setResultsTable(resultsTable.concat(res.map(e => ({ ...e, name: itemName }))))
     }
@@ -97,10 +104,19 @@ function PricesManager() {
     setResultsTable(newResults)
   }
 
+  const onSetUseful = (item: IItem) => {
+    setEquip(null)
+    setUseful(item)
+  }
+
+  const onSetEquip = (item: IItem) => {
+    setUseful(null)
+    setEquip(item)
+  }
 
   return (
     <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-      <PricesForm manualItem={manualItem} onManualItemChange={setManualItem} item={item} onItemChange={setItem} city={city} onCityChange={setCity}
+      <PricesForm manualItem={manualItem} onManualItemChange={setManualItem} useful={useful} onUsefulChange={onSetUseful} equip={equip} onEquipChange={onSetEquip} city={city} onCityChange={setCity}
         clearData={clearData} refreshData={refreshData} restoreData={restoreData} saveData={saveData} retrieveData={retrieveData} getFixedRunes={getFixedRunes} />
       <PricesTable elements={resultsTable} sortByCallback={sortBy} removeResultCallback={removeResult} />
     </div >

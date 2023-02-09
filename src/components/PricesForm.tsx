@@ -1,12 +1,14 @@
 import React from 'react'
 import Select from 'react-select'
-import { IItem, usefulItems } from '../database/items'
+import { IItem, usefulItems, equipItems } from '../database/items'
 
 export interface IPriceFormProps {
   manualItem: string
   onManualItemChange: (value: string) => void
-  item: IItem
-  onItemChange: (value: IItem) => void
+  useful: IItem
+  onUsefulChange: (value: IItem) => void
+  equip: IItem
+  onEquipChange: (value: IItem) => void
   city: { label: string, value: string }
   onCityChange: (value: { label: string, value: string }) => void
   clearData: () => void
@@ -18,9 +20,10 @@ export interface IPriceFormProps {
 }
 
 function PricesForm(props: IPriceFormProps) {
-  const { manualItem, onManualItemChange, item, onItemChange, city, onCityChange, clearData, refreshData, restoreData, saveData, retrieveData, getFixedRunes } = props
+  const { manualItem, onManualItemChange, useful, onUsefulChange, equip, onEquipChange, city, onCityChange, clearData, refreshData, restoreData, saveData, retrieveData, getFixedRunes } = props
 
   const allItemsOptions = usefulItems
+  const allEquipOptions = equipItems
   const allCities = [
     { label: 'Fort Sterling', value: 'Fort%20Sterling' },
     { label: 'Bridgewatch', value: 'Bridgewatch' },
@@ -41,7 +44,7 @@ function PricesForm(props: IPriceFormProps) {
           <div className="space-y-6 sm:space-y-5">
             <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
               <label htmlFor="manual-item" className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
-                Objeto por ID
+                Objeto por ID (Avanzado)
               </label>
               <div className="mt-1 sm:mt-0 sm:col-span-2">
                 <input
@@ -56,13 +59,29 @@ function PricesForm(props: IPriceFormProps) {
             </div>
             <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
               <label htmlFor="object" className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
-                Selección Material
+                Selección Objetos
               </label>
               <div className="mt-1 sm:mt-0 sm:col-span-2">
                 <Select
                   options={allItemsOptions}
-                  value={item}
-                  onChange={e => onItemChange(e)}
+                  value={useful}
+                  onChange={e => onUsefulChange(e)}
+                  getOptionLabel={e => e.LocalizedNames ? `${e.LocalizedNames['ES-ES']} (${e.UniqueName})` : e.UniqueName}
+                  getOptionValue={e => e.UniqueName}
+                  isClearable={true}
+                  className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md"
+                />
+              </div>
+            </div>
+            <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+              <label htmlFor="object" className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
+                Selección Equipo
+              </label>
+              <div className="mt-1 sm:mt-0 sm:col-span-2">
+                <Select
+                  options={allEquipOptions}
+                  value={equip}
+                  onChange={e => onEquipChange(e)}
                   getOptionLabel={e => e.LocalizedNames ? `${e.LocalizedNames['ES-ES']} (${e.UniqueName})` : e.UniqueName}
                   getOptionValue={e => e.UniqueName}
                   isClearable={true}
