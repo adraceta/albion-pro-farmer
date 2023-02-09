@@ -30,7 +30,6 @@ function PricesForm(props: IPriceFormProps) {
     { label: 'Thetford', value: 'Thetford' },
   ]
 
-
   return (
     <form className="">
       <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
