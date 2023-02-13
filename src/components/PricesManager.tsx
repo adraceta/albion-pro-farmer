@@ -22,12 +22,12 @@ function PricesManager() {
     const a = 'T1_CARROT'
     // &time-scale=1
     const res = await fetch(`https://www.albion-online-data.com/api/v2/stats/Prices/${actualUniqueName || useful?.UniqueName || equip?.UniqueName || manualItem || a}.json?locations=${actualCity || city.value}`)
-    const json = await res.json()
+    const json: IItem[] = await res.json()
     return json
   }
 
-  const fetchAll = async (array) => {
-    const allAsyncResults = []
+  const fetchAll = async (array: IItem[]) => {
+    const allAsyncResults: IItem[] = []
     for (const element of array) {
       const asyncResult = await fetchData(element.item_id, element.city)
       allAsyncResults.push(...asyncResult.map(e => ({ ...e, name: element.name })))
@@ -46,7 +46,7 @@ function PricesManager() {
 
   const retrieveData = async (actualUniqueName?: string, actualCity?: string) => {
     const res = await fetchData(actualUniqueName, actualCity)
-    let itemName
+    let itemName: string
     if (useful) {
       itemName = useful?.LocalizedNames ? useful.LocalizedNames['ES-ES'] : (actualUniqueName || manualItem)
     } else if (equip) {
