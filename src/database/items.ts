@@ -23,7 +23,16 @@ export interface IItem {
   buyPriceMaxDate?: Date
 }
 
-const allItems = [
+type rawItem = {
+  LocalizedNames: {
+    "EN-US": string,
+    "ES-ES": string,
+  },
+  Index: number
+  UniqueName: string
+}
+
+const allItems: rawItem[] = [
   {
     LocalizedNames: {
       "EN-US": "Hideout Construction Kit",
@@ -61637,7 +61646,7 @@ const allItems = [
 export const usefulItems = allItems.filter(e => e.Index <= 905)
 export const equipItems = allItems.filter(e => e.Index >= 1533 && e.Index <= 3983)
 
-const runesOrder = (name) => {
+const runesOrder = (name: string) => {
   if (name.includes('RUNE')) {
     return 'A'
   } else if (name.includes('SOUL')) {
@@ -61647,7 +61656,7 @@ const runesOrder = (name) => {
   }
 }
 
-const compareRunes = (a, b) => {
+const compareRunes = (a: rawItem, b: rawItem) => {
   const compareA = runesOrder(a.UniqueName)
   const compareB = runesOrder(b.UniqueName)
 
