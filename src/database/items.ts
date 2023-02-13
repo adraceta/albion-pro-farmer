@@ -56323,7 +56323,7 @@ const allItems: rawItem[] = [
     UniqueName: "T8_RANDOM_DUNGEON_TOKEN_4@3"
   }
 ]
-const skins = [
+const skins: rawItem[] = [
   {
     LocalizedNames: {
       "EN-US": "Legendary Explorer's Horse",
@@ -59517,7 +59517,7 @@ const skins = [
     UniqueName: "SKIN_DIREWOLF_DEMONICWARRIOR"
   }
 ]
-const journals = [
+const journals: rawItem[] = [
   {
     LocalizedNames: {
       "EN-US": "Novice Lumberjack's Journal (Empty)",
