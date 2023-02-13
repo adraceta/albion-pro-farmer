@@ -56320,7 +56320,10 @@ const allItems: rawItem[] = [
     },
     Index: 7271,
     UniqueName: "T8_RANDOM_DUNGEON_TOKEN_4@3"
-  },
+  }
+]
+  
+const skins = [
   {
     LocalizedNames: {
       "EN-US": "Legendary Explorer's Horse",
@@ -59512,7 +59515,10 @@ const allItems: rawItem[] = [
     },
     Index: 7678,
     UniqueName: "SKIN_DIREWOLF_DEMONICWARRIOR"
-  },
+  }
+]
+
+const journals = [
   {
     LocalizedNames: {
       "EN-US": "Novice Lumberjack's Journal (Empty)",
