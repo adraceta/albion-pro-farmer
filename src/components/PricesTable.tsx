@@ -1,6 +1,22 @@
 import React from 'react'
 import { IItem } from '../database/items'
 
+const getQuality = (quality: number) => {
+  if (quality === 1) {
+    return 'plano'
+  } else if (quality === 2) {
+    return 'bueno'
+  } else if (quality === 3) {
+    return 'notable'
+  } else if (quality === 4) {
+    return 'sobresaliente'
+  } else if (quality === 5) {
+    return 'obra maestra'
+  }
+  return ''
+}
+const getFullName = (item: IItem) => (item.quality > 1 ? `${item.name} (${getQuality(item.quality)})` : item.name)
+
 interface IPriceTableProps {
   elements: IItem[]
   sortByCallback: (property: string, desc?: boolean) => void
@@ -42,7 +58,7 @@ function PricesTable(props: IPriceTableProps) {
                     <td className="thumb-img">
                       <img src={`https://render.albiononline.com/v1/item/${e.item_id}.png`} alt={`${e.item_id}_thumb`} />
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{e.name}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{getFullName(e)}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{e.city}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{e.sell_price_min}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{e.buy_price_max}</td>

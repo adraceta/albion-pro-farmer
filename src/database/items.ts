@@ -10,6 +10,7 @@ export interface IItem {
   item_id?: string
   city?: string
   qualityLevel?: number
+  quality?: number
   sellPriceMin?: number
   sell_price_min?: number
   sellPriceMinDate?: Date
