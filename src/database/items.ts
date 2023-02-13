@@ -1,6 +1,7 @@
 /* eslint-disable comma-dangle */
 /* eslint-disable camelcase */
 /* eslint-disable quotes */
+/* eslint-disable no-unused-vars */
 export interface IItem {
   LocalizedNames: { "EN-US": string, "ES-ES": string }
   Index: number
@@ -56322,7 +56323,6 @@ const allItems: rawItem[] = [
     UniqueName: "T8_RANDOM_DUNGEON_TOKEN_4@3"
   }
 ]
-  
 const skins = [
   {
     LocalizedNames: {
@@ -59517,7 +59517,6 @@ const skins = [
     UniqueName: "SKIN_DIREWOLF_DEMONICWARRIOR"
   }
 ]
-
 const journals = [
   {
     LocalizedNames: {
